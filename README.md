@@ -1,7 +1,7 @@
 ### Install
 
 ```
-npm install -g qiniu
+npm install -g qiniu-cli
 ```
 
 ### Setup
