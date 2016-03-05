@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+"use strict";
+
+const gulp = require('gulp');
+const qiniu = require('gulp-qiniu');
+const program = require('commander');
+const homePath = require('home-path')();
+const path = require('path')
+const configPath = path.join(homePath, '.qiniu.json')
+const fs = require('fs')
+
+if (!fs.existsSync(configPath)) {
+  console.log(`Error: "${configPath}" is not found.
+
+you need to add config file like this:
+
+{
+  "accessKey": '<YOUR ACCESS KEY>',
+  "secretKey": '<YOUR SECRET KEY>',
+  "bucket": 'test',
+  "origin": 'http://test.qiniudn.com'
+}
+  `)
+
+  process.exit(1)
+}
+
+var qiniuConfig
+
+try {
+  qiniuConfig = require(configPath)
+} catch (err) {
+  console.error('Error: ', err)
+
+  process.exit(1)
+}
+
+function upload(options, done) {
+  // gulp.src('./web/resources/edm/**', {base: './web/resources/edm'})
+  var qiniuOptions = {base: ""}
+  gulp.src(options.src, qiniuOptions)
+    .pipe(qiniu(qiniuConfig, {
+      dir: options.prefix
+    }))
+    .on('end', function () {
+      if (done) done();
+    });
+}
+
+program
+  .version('0.0.1')
+  .usage('[options] <src> [prefix]')
+  .arguments('<src> [prefix]')
+  .action(function (src, prefix) {
+    upload({
+      src: src,
+      prefix: prefix || ''
+    }, function () {
+      console.log('Done!');
+    });
+  })
+
+program.parse(process.argv);
+if (!program.args.length) program.help();

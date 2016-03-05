@@ -1,0 +1,26 @@
+{
+  "name": "qiniu-cli",
+  "version": "0.0.1",
+  "description": "Qiniu uploader CLI",
+  "author": "hfcorriez <hfcorriez@gmail.com>",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/hfcorriez/qiniu-cli/blob/master/LICENSE"
+    }
+  ],
+  "keywords": [
+    "qiniu",
+    "cli",
+    "uploader",
+    "cdn"
+  ],
+  "private": true,
+  "dependencies": {
+    "commander": "^2.9.0",
+    "gulp": "^3.8.10",
+    "gulp-qiniu": "^0.2.1",
+    "home-path": "^1.0.3",
+    "mkdirp": "^0.5.1"
+  }
+}
