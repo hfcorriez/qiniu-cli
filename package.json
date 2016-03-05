@@ -15,7 +15,6 @@
     "uploader",
     "cdn"
   ],
-  "private": true,
   "dependencies": {
     "commander": "^2.9.0",
     "gulp": "^3.8.10",
