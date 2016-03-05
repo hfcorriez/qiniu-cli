@@ -1,6 +1,6 @@
 {
   "name": "qiniu-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Qiniu uploader CLI",
   "author": "hfcorriez <hfcorriez@gmail.com>",
   "licenses": [
@@ -9,6 +9,9 @@
       "url": "https://github.com/hfcorriez/qiniu-cli/blob/master/LICENSE"
     }
   ],
+  "bin": {
+    "qiniu": "bin/qiniu"
+  },
   "keywords": [
     "qiniu",
     "cli",
